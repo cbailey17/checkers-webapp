@@ -8,10 +8,12 @@ Source: https://sketchfab.com/3d-models/game-of-checkers-9159441882944dadb0ace1e
 Title: Game of Checkers
 */
 
-import * as THREE from 'three'
-import React, { useRef } from 'react'
+import * as THREE from '../../node_modules/@types/three'
+import React, { useLayoutEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
+import { useFrame } from '@react-three/fiber'
+import gsap from 'gsap'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -63,10 +65,18 @@ type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicE
 export function CheckerBoard(props: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>(null!)
   const tl = useRef();
-  
+
   const { nodes, materials, animations } = useGLTF('/models/game_of_checkers.glb') as GLTFResult
   const { actions } = useAnimations(animations, group)
+
+  useFrame(() => {
+    tl.current.seek(scroll.offset * tl.current.duration());
+  });
   
+  useLayoutEffect(() => {
+    tl.current = gsap.timeline();
+  }, []);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
