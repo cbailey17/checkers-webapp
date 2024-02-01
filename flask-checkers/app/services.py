@@ -1,19 +1,24 @@
+import game.game as game
 
 class CheckersService:
     def __init__(self):
         """ 
         Initialize the board
         """
-        # Constants
-        self.EMPTY = 0
-        self.WHITE = 1
-        self.BLACK = 2
-        self.KING = 4
 
-        # Initial board setup
-        self.white_pieces = 0b0000000000000000000000000000000011111111111111111111111111111
-        self.black_pieces = 0b1111111111111111000000000000000000000000000000000000000000000000
-        self.kings = 0b0000000000000000000000000000000000000000000000000000000000000000
+    def is_terminal(self):
+        """
+        Check if the game is over
+        """
+        return False
+    
+    def start_game(self):
+        """
+        Start the game
+        """
+        game.Game()
+        
+
 
     def display_board(self):
         """

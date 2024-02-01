@@ -1,4 +1,5 @@
 from flask import Flask
+import services
 
 app = Flask(__name__)
 
@@ -6,8 +7,14 @@ app = Flask(__name__)
 def index():
     return 'Hello, World!'
 
+@app.route('/api/startGame')
+def startGame():
+    services.startGame()
+    return 'Game started'
+
 @app.route('/api/generateBitboards')
 def generateBitboards():
+    services.generateBitboards()
     return 'Bitboards generated'
 
 @app.route('/api/getMoves') 
