@@ -9,7 +9,7 @@ def index():
 
 @app.route('/api/startGame')
 def startGame():
-    services.startGame()
+    services.start_game()
     return 'Game started'
 
 @app.route('/api/generateBitboards')

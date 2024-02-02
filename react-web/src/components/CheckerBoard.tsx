@@ -69,14 +69,6 @@ export function CheckerBoard(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials, animations } = useGLTF('/models/game_of_checkers.glb') as GLTFResult
   const { actions } = useAnimations(animations, group)
 
-  useFrame(() => {
-    tl.current.seek(scroll.offset * tl.current.duration());
-  });
-  
-  useLayoutEffect(() => {
-    tl.current = gsap.timeline();
-  }, []);
-
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">

@@ -2,6 +2,7 @@ import './App.css'
 import { Canvas } from '@react-three/fiber'
 import { useState } from 'react';
 import { Hero } from './components/Hero';
+import CheckersGame from './components/CheckersGame';
 
 function App() {
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
@@ -18,6 +19,7 @@ function App() {
         <color attach="background" args={['#171720']} />
         <Hero />
       </Canvas>
+      <CheckersGame />
     </div>
   )
 }
