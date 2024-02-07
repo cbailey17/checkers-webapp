@@ -1,20 +1,23 @@
+// Piece.tsx
 import React from 'react';
 import { Cylinder } from '@react-three/drei';
 
 interface PieceProps {
   position: number;
-  isDarkSquare: boolean;
   onClick: () => void;
   isSelected: boolean;
   isKing: boolean;
 }
 
-const Piece: React.FC<PieceProps> = ({ position, isDarkSquare, onClick, isSelected = false, isKing = false }) => {
-  const pieceColor = isKing ? 'gold' : isDarkSquare ? 'black' : 'white';
+const Piece: React.FC<PieceProps> = ({ position, onClick, isSelected = false, isKing = false }) => {
+  const isWhitePiece = Math.floor(position / 8) < 3;
+  const pieceColor = isKing ? 'gold' : isWhitePiece ? 'white' : 'black';
+
+  console.log(`position: ${position}`);  
 
   return (
-    <mesh onClick={onClick} position={[position % 8, 0.5, Math.floor(position / 8)]} castShadow>
-      <Cylinder args={[0.4, 0.4, 0.2, 32]} receiveShadow castShadow>
+    <mesh onClick={onClick} position={[position % 8 - 3.5, 0.2, Math.floor(position / 8) - 3.5]}> {/* Adjusted Y position for better visibility */}
+      <Cylinder scale={[1, 1, 1]} args={[0.45, 0.45, 0.2, 32]} receiveShadow castShadow> {/* Adjust the scale of the piece */}
         <meshStandardMaterial color={isSelected ? 'yellow' : pieceColor} />
       </Cylinder>
     </mesh>

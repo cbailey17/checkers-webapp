@@ -16,12 +16,15 @@ const Board: React.FC<BoardProps> = ({ onSquareClick, selectedSquare }) => {
         const position = row * 8 + col;
         const isDarkSquare = (row + col) % 2 === 1;
 
+        const hasPiece =
+          (row < 3 && (row + col) % 2 === 1) || (row > 4 && (row + col) % 2 === 1);
+
         squares.push(
           <Square
             key={position}
             position={position}
             isDark={isDarkSquare}
-            hasPiece={true} // You can conditionally set this based on your logic
+            hasPiece={hasPiece}
             onClick={() => onSquareClick(position)}
             isSelected={selectedSquare !== null && selectedSquare === position}
           />
@@ -34,8 +37,8 @@ const Board: React.FC<BoardProps> = ({ onSquareClick, selectedSquare }) => {
 
   return (
     <group>
-      <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeBufferGeometry attach="geometry" args={[8, 8]} />
+      <mesh rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry attach="geometry" args={[8, 8]} />
         <meshStandardMaterial attach="material" color={'#d3d3d3'} />
       </mesh>
       {renderSquares()}

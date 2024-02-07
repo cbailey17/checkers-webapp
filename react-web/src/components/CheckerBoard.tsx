@@ -12,8 +12,8 @@ import * as THREE from '../../node_modules/@types/three'
 import React, { useLayoutEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
-import { useFrame } from '@react-three/fiber'
-import gsap from 'gsap'
+// import { useFrame } from '@react-three/fiber'
+// import gsap from 'gsap'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -61,6 +61,7 @@ interface GLTFAction extends THREE.AnimationClip {
 }
 
 type ContextType = Record<string, React.ForwardRefExoticComponent<JSX.IntrinsicElements['mesh']>>
+
 
 export function CheckerBoard(props: JSX.IntrinsicElements['group']) {
   const group = useRef<THREE.Group>(null!)
