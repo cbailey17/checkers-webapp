@@ -16,9 +16,9 @@ const Piece: React.FC<PieceProps> = ({ position, onClick, isSelected = false, is
   console.log(`position: ${position}`);  
 
   return (
-    <mesh onClick={onClick} position={[position % 8 - 3.5, 0.2, Math.floor(position / 8) - 3.5]}> {/* Adjusted Y position for better visibility */}
-      <Cylinder scale={[1, 1, 1]} args={[0.45, 0.45, 0.2, 32]} receiveShadow castShadow> {/* Adjust the scale of the piece */}
-        <meshStandardMaterial color={isSelected ? 'yellow' : pieceColor} />
+    <mesh onClick={onClick} position={[position % 8, 0.2, position / 8]}> 
+      <Cylinder scale={[1, 1, 1]} args={[0.45, 0.45, 0.2, 32]} receiveShadow castShadow> 
+        <meshStandardMaterial color={isSelected ? '#D4FF32' : pieceColor} />
       </Cylinder>
     </mesh>
   );

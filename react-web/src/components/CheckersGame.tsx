@@ -5,14 +5,14 @@ import Board from './Board';
 // import Piece from './Piece';
 // import Square from './Square';
 
-type Bitboards = {
+export type Bitboards = {
   whitePieces: number;
   blackPieces: number;
   kings: number;
 };
 
 const CheckersGame: React.FC = () => {
-  // const [bitboards, setBitboards] = useState<Bitboards>(initializeBitboards());
+  const [bitboards, setBitboards] = useState<Bitboards>(initializeBitboards());
   const [selectedSquare, setSelectedSquare] = useState<number | null>(null);
 
   const handleSquareClick = (square: number) => {
@@ -27,6 +27,7 @@ const CheckersGame: React.FC = () => {
       <Board
         onSquareClick={handleSquareClick}
         selectedSquare={selectedSquare}
+        pieces={bitboards}
       />
       <OrbitControls />
     </Canvas>

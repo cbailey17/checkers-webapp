@@ -1,10 +1,14 @@
 // Board.tsx
 import React from 'react';
 import Square from './Square';
+import { Bitboards } from './CheckersGame'; 
+import { Point, Points } from '@react-three/drei';
+// import { Instances } from '@react-three/drei';
 
 interface BoardProps {
   onSquareClick: (square: number) => void;
   selectedSquare: number | null;
+  pieces: Bitboards
 }
 
 const Board: React.FC<BoardProps> = ({ onSquareClick, selectedSquare }) => {
